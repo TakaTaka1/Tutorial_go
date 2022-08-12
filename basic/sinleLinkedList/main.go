@@ -28,6 +28,23 @@ func (l *SingleLinkedList) Insert(val int) {
 	}
 }
 
+func (l *SingleLinkedList) InsertAt(val int, pos int) *Node {
+	if l.head == nil {
+		return nil
+	}
+
+	ptr := l.head
+	node := &Node{value: val}
+	for i := 0; i < pos; i++ {
+		ptr = ptr.next
+	}
+	node.next = ptr.next // 追加するnodeのアドレスに「元データの次の参照アドレス」を渡す
+	ptr.next = node      // 追加するnodeのアドレスを渡す
+
+	l.len++
+	return ptr
+}
+
 func (l *SingleLinkedList) GetLinkedListDataAt(n int) *Node {
 	if n > l.len {
 		return nil
@@ -51,23 +68,6 @@ func (l *SingleLinkedList) Traverse() []int {
 		current = current.next
 	}
 	return list
-}
-
-func (l *SingleLinkedList) InsertAt(val int, pos int) *Node {
-	if l.head == nil {
-		return nil
-	}
-
-	ptr := l.head
-	node := &Node{value: val}
-	for i := 0; i < pos; i++ {
-		ptr = ptr.next
-	}
-	node.next = ptr.next
-	ptr.next = node
-
-	l.len++
-	return ptr
 }
 
 func main() {
