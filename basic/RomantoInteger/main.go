@@ -19,12 +19,7 @@ func RomanToInteger(s string) int {
 	currentNum, lastNum, total := 0, 0, 0
 	for i := 0; i < len(s); i++ {
 		char := s[len(s)-(i+1) : len(s)-i]
-		// [3 : 4] => 100
-		// [2 : 3] => 1000
-		// [1 : 2] => 100
-		// [0 : 1] => 1000
 		currentNum = roman[char]
-
 		if currentNum < lastNum {
 			total = total - currentNum
 		} else {
