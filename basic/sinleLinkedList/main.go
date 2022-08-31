@@ -18,12 +18,14 @@ func InitList() *SingleLinkedList {
 
 func (l *SingleLinkedList) Insert(val int) {
 	node := &Node{value: val}
+	fmt.Println(node)
 	if l.len != 0 {
 		node.next = l.head
 		l.head = node
 		l.len++
 	} else {
 		l.head = node
+		fmt.Println(l)
 		l.len++
 	}
 }
@@ -72,10 +74,11 @@ func (l *SingleLinkedList) Traverse() []int {
 
 func main() {
 	list := InitList()
+	fmt.Println(list)
 	list.Insert(10)
-	list.Insert(11)
-	list.Insert(12)
+	// list.Insert(11)
+	// list.Insert(12)
 
-	list.InsertAt(20, 1)
-	fmt.Println(list.Traverse())
+	// list.InsertAt(20, 1)
+	// fmt.Println(list.Traverse())
 }
