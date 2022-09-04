@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func validParenthesis(s string) bool {
 	if len(s)%2 != 0 {
 		return false
@@ -21,16 +19,16 @@ func validParenthesis(s string) bool {
 		}
 
 		l := len(st) - 1
-		if l < 0 || r != st[l] {
+		if l < 0 || r != st[l] { // 組み合わせが正しければオープンの次はクローズが必ずくる
 			return false
 		}
 
-		st = st[:l]
+		st = st[:l] // ひとつずつスライス
 	}
 
-	return len(st) == 0
+	return len(st) == 0 // 空になれば組み合わせは正しい
 }
 
 func main() {
-	fmt.Println(validParenthesis("((]]"))
+	validParenthesis("[[]]")
 }

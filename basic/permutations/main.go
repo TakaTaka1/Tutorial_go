@@ -12,7 +12,6 @@ func permutations(nums []int) [][]int {
 		for i, v := range nums {
 			input = append(input, nums[:i]...)
 			input = append(input, nums[i+1:]...)
-
 			rest = append(rest, permutations(input)...)
 			input = nil
 			for _, restRange := range rest {
@@ -27,7 +26,7 @@ func permutations(nums []int) [][]int {
 }
 
 func main() {
-	test := []int{2, 0, 1}
+	test := []int{1, 2, 3}
 	fmt.Println(permutations(test))
 	// [[2 0 1] [2 1 0] [0 2 1] [0 1 2] [1 2 0] [1 0 2]]
 }
