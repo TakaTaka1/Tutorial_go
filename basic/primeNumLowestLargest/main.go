@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 func main() {
-
-	fmt.Println(LowestAndLargest(CheckPrime(1, 100)))
+	fmt.Println(CheckPrime(1, 341))
+	fmt.Println(LowestAndLargest(CheckPrime(1, 341)))
 
 }
 
