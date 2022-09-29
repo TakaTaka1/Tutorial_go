@@ -8,26 +8,36 @@ type Node struct {
 }
 
 type SingleLinkedList struct {
-	len  int
-	head *Node
+	len        int
+	head, tail *Node
 }
 
 func InitList() *SingleLinkedList {
 	return &SingleLinkedList{}
 }
 
-func (l *SingleLinkedList) Insert(val int) {
+func (l *SingleLinkedList) InsertHead(val int) {
 	node := &Node{value: val}
-	fmt.Println(node)
 	if l.len != 0 {
-		node.next = l.head
-		l.head = node
+		node.next = l.head // 新規ノードがheadを指すように
+		l.head = node      // headがnodeを指すように
 		l.len++
 	} else {
 		l.head = node
-		fmt.Println(l)
 		l.len++
 	}
+}
+
+func (l *SingleLinkedList) InsertTail(val int) {
+	node := &Node{value: val}
+	if l.len != 0 {
+		l.tail.next = node // tailの次ノードを新規追加のnodeにする
+		l.len++
+	} else {
+		l.head = node
+		l.len++
+	}
+	l.tail = node // tailを現在のノードにする(上書きされるわけではなく新たなノード(tail)が作成されるイメージ)
 }
 
 func (l *SingleLinkedList) InsertAt(val int, pos int) *Node {
@@ -74,11 +84,9 @@ func (l *SingleLinkedList) Traverse() []int {
 
 func main() {
 	list := InitList()
-	fmt.Println(list)
-	list.Insert(10)
-	// list.Insert(11)
-	// list.Insert(12)
-
+	list.InsertTail(10)
+	list.InsertTail(11)
+	list.InsertTail(12)
 	// list.InsertAt(20, 1)
-	// fmt.Println(list.Traverse())
+	fmt.Println(list.Traverse())
 }
